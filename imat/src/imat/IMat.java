@@ -21,8 +21,7 @@ public class IMat {
     public static void main(String[] args) {
         try {
             // Set System L&F
-        UIManager.setLookAndFeel(
-            UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } 
         catch (UnsupportedLookAndFeelException e) {
            // handle exception
@@ -36,6 +35,8 @@ public class IMat {
         catch (IllegalAccessException e) {
            // handle exception
         }
+        IMatView view = new IMatView();
+        view.setVisible(true);
     }
     
 }
