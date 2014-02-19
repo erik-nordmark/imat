@@ -13,7 +13,7 @@ package imat;
 public class IMatView extends javax.swing.JFrame {
 
     /**
-     * Creates new form IMatView
+     * Creates new form iMatView
      */
     public IMatView() {
         initComponents();
