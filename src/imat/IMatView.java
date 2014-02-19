@@ -59,7 +59,7 @@ public class IMatView extends javax.swing.JFrame {
                         .addComponent(jCheckBox1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(82, 82, 82))
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
@@ -84,7 +84,7 @@ public class IMatView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
+                        .addGap(33, 33, 33)
                         .addComponent(jCheckBox1)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
