@@ -72,6 +72,7 @@ public class IMatView extends javax.swing.JFrame {
         searchButton.setText("Sök");
         searchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 3));
         searchButton.setContentAreaFilled(false);
+        searchButton.setOpaque(true);
 
         javax.swing.GroupLayout topBarPanelLayout = new javax.swing.GroupLayout(topBarPanel);
         topBarPanel.setLayout(topBarPanelLayout);

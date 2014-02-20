@@ -189,6 +189,7 @@
                   </Border>
                 </Property>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
           </SubComponents>
