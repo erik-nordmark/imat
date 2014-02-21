@@ -41,8 +41,7 @@ public class IMatView extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         sideBarPanel = new javax.swing.JPanel();
-        menyItemMeat = new javax.swing.JPanel();
-        menyItemMeatLabel = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,11 +147,6 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(topBarPanelLayout.createSequentialGroup()
                 .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(topBarPanelLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(searchBar)
-                            .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)))
-                    .addGroup(topBarPanelLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(topBarPanelLayout.createSequentialGroup()
@@ -170,6 +164,12 @@ public class IMatView extends javax.swing.JFrame {
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jSeparator4))
                 .addContainerGap())
+            .addGroup(topBarPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(topBarPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -179,42 +179,33 @@ public class IMatView extends javax.swing.JFrame {
 
         sideBarPanel.setBackground(new java.awt.Color(90, 90, 90));
 
-        menyItemMeat.setBackground(new java.awt.Color(190, 190, 190));
-        menyItemMeat.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        menyItemMeat.setOpaque(false);
-
-        menyItemMeatLabel.setFont(new java.awt.Font("Proxima Nova Rg", 0, 30)); // NOI18N
-        menyItemMeatLabel.setForeground(new java.awt.Color(240, 240, 240));
-        menyItemMeatLabel.setText("Kött");
-
-        javax.swing.GroupLayout menyItemMeatLayout = new javax.swing.GroupLayout(menyItemMeat);
-        menyItemMeat.setLayout(menyItemMeatLayout);
-        menyItemMeatLayout.setHorizontalGroup(
-            menyItemMeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menyItemMeatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(menyItemMeatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        menyItemMeatLayout.setVerticalGroup(
-            menyItemMeatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menyItemMeatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(menyItemMeatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jButton7.setBackground(new java.awt.Color(250, 250, 250));
+        jButton7.setFont(new java.awt.Font("FontAwesome", 1, 18)); // NOI18N
+        jButton7.setText("Favoriter ");
+        jButton7.setBorderPainted(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton7.setOpaque(true);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout sideBarPanelLayout = new javax.swing.GroupLayout(sideBarPanel);
         sideBarPanel.setLayout(sideBarPanelLayout);
         sideBarPanelLayout.setHorizontalGroup(
             sideBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menyItemMeat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(sideBarPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addContainerGap())
         );
         sideBarPanelLayout.setVerticalGroup(
             sideBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sideBarPanelLayout.createSequentialGroup()
-                .addComponent(menyItemMeat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 591, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(590, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -264,6 +255,10 @@ public class IMatView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -276,13 +271,12 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton7;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JPanel menyItemMeat;
-    private javax.swing.JLabel menyItemMeatLabel;
     private javax.swing.JTextField searchBar;
     private javax.swing.JButton searchButton;
     private javax.swing.JPanel sideBarPanel;
