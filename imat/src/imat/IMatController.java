@@ -6,25 +6,29 @@
 
 package imat;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author Joakim
  */
-public class IMatController implements Observer{
+public class IMatController{
     //private IMatModel model;
     private IMatView view;
     
     public IMatController(IMatView view){
         this.view = view;
-        //view.addObserver(this);
-    }
+        view.addCategoriesListeners(new ActionListener(){
 
-    @Override
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //List<IMatProduct> listOfProducts = model.getCategoryProducts(e.getActionCommand());
+                //view.setProducts(listOfProducts);
+                view.setOutput("Det funkar");
+            }
+            
+        });
     }
     
 }
