@@ -6,6 +6,8 @@
 
 package imat;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Joakim
@@ -41,7 +43,7 @@ public class IMatView extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         sideBarPanel = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
+        categoryFavorites = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,15 +181,14 @@ public class IMatView extends javax.swing.JFrame {
 
         sideBarPanel.setBackground(new java.awt.Color(90, 90, 90));
 
-        jButton7.setBackground(new java.awt.Color(250, 250, 250));
-        jButton7.setFont(new java.awt.Font("FontAwesome", 1, 18)); // NOI18N
-        jButton7.setText("Favoriter ");
-        jButton7.setBorderPainted(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton7.setOpaque(true);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        categoryFavorites.setBackground(new java.awt.Color(250, 250, 250));
+        categoryFavorites.setFont(new java.awt.Font("FontAwesome", 1, 18)); // NOI18N
+        categoryFavorites.setText("Favoriter ");
+        categoryFavorites.setBorderPainted(false);
+        categoryFavorites.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        categoryFavorites.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                categoryFavoritesActionPerformed(evt);
             }
         });
 
@@ -197,14 +198,14 @@ public class IMatView extends javax.swing.JFrame {
             sideBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sideBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addComponent(categoryFavorites, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                 .addContainerGap())
         );
         sideBarPanelLayout.setVerticalGroup(
             sideBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sideBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(categoryFavorites, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(590, Short.MAX_VALUE))
         );
 
@@ -255,9 +256,9 @@ public class IMatView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void categoryFavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryFavoritesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_categoryFavoritesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,11 +268,11 @@ public class IMatView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton categoryFavorites;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -282,4 +283,12 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel sideBarPanel;
     private javax.swing.JPanel topBarPanel;
     // End of variables declaration//GEN-END:variables
+
+    public void addCategoriesListeners(ActionListener aL){
+        categoryFavorites.addActionListener(aL);
+    }
+    
+    public void setOutput(String s){
+        searchBar.setText(s);
+    }
 }

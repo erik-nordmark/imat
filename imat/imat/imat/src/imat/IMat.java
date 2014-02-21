@@ -35,7 +35,9 @@ public class IMat {
         catch (IllegalAccessException e) {
            // handle exception
         }
+        //IMatModel model = new IMatModel();
         IMatView view = new IMatView();
+        IMatController controller = new IMatController(view);
         view.setVisible(true);
     }
     
