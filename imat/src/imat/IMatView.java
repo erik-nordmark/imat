@@ -6,17 +6,22 @@
 
 package imat;
 
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  *
  * @author Joakim
  */
 public class IMatView extends javax.swing.JFrame {
-
+    private Observable observable;
     /**
      * Creates new form IMatView
      */
     public IMatView() {
         initComponents();
+        observable = new Observable();
     }
 
     /**
@@ -288,4 +293,14 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JPanel sideBarPanel;
     private javax.swing.JPanel topBarPanel;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void addCategoriesListeners(ActionListener aL){
+        // Lägga till alla knappars actionlisteners till argumentet.
+    }
+    
+    public void setOutput(String s){
+        
+    }
+    
 }
