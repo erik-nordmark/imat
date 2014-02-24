@@ -59,6 +59,7 @@ public class IMatView extends javax.swing.JFrame {
         sideBarPanel = new javax.swing.JPanel();
         categoryFavorites = new javax.swing.JButton();
         productsPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         shoppingCartPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -164,19 +165,6 @@ public class IMatView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarPanelLayout.createSequentialGroup()
                 .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(topBarPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(historyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator3)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2)
-                            .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
                         .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
@@ -185,7 +173,15 @@ public class IMatView extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(topBarPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator4)
+                            .addComponent(historyButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(helpButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(topBarPanelLayout.createSequentialGroup()
@@ -222,10 +218,11 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(sideBarPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(categoryFavorites, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(590, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         productsPanel.setLayout(new java.awt.GridLayout(0, 3));
+        productsPanel.add(jScrollPane1);
 
         jLabel1.setFont(new java.awt.Font("Proxima Nova Rg", 0, 26)); // NOI18N
         jLabel1.setText("Varukorg");
@@ -244,7 +241,7 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(shoppingCartPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(861, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -319,6 +316,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JButton historyButton;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
