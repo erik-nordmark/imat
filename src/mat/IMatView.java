@@ -6,6 +6,8 @@
 
 package mat;
 
+import java.awt.Color;
+import java.util.List;
 import java.awt.event.ActionListener;
 
 /**
@@ -13,12 +15,24 @@ import java.awt.event.ActionListener;
  * @author Joakim
  */
 public class IMatView extends javax.swing.JFrame {
+    private final String searchBarInitialText;
+    private List<ProductPanel> products;
+    private IMatModel model;
 
     /**
      * Creates new form IMatView
      */
     public IMatView() {
         initComponents();
+        searchBarInitialText = searchBar.getText();
+    }
+    
+    /**
+     * Creates new form IMatView
+     */
+    public IMatView(IMatModel model) {
+        this();
+        this.model = model;
     }
 
     /**
@@ -37,13 +51,16 @@ public class IMatView extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         searchBar = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
+        settingsButton = new javax.swing.JButton();
+        historyButton = new javax.swing.JButton();
+        helpButton = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         sideBarPanel = new javax.swing.JPanel();
         categoryFavorites = new javax.swing.JButton();
+        productsPanel = new javax.swing.JPanel();
+        shoppingCartPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,21 +69,34 @@ public class IMatView extends javax.swing.JFrame {
         topBarPanel.setBackground(new java.awt.Color(255, 255, 255));
         topBarPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(90, 90, 90)));
 
-        jSeparator2.setForeground(new java.awt.Color(90, 90, 90));
+        jSeparator2.setForeground(new java.awt.Color(150, 150, 150));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jSeparator3.setForeground(new java.awt.Color(90, 90, 90));
+        jSeparator3.setForeground(new java.awt.Color(150, 150, 150));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jSeparator4.setForeground(new java.awt.Color(90, 90, 90));
+        jSeparator4.setForeground(new java.awt.Color(150, 150, 150));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        searchBar.setBackground(new java.awt.Color(250, 250, 250));
+        searchBar.setBackground(new java.awt.Color(245, 245, 245));
         searchBar.setFont(new java.awt.Font("Proxima Nova Rg", 0, 20)); // NOI18N
-        searchBar.setForeground(new java.awt.Color(70, 70, 70));
-        searchBar.setText("Sök efter en vara");
-        searchBar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 230, 230), 3, true));
+        searchBar.setForeground(new java.awt.Color(120, 120, 120));
+        searchBar.setText("Sök efter en vara...");
+        searchBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 0, 20));
         searchBar.setMargin(new java.awt.Insets(2, 20, 2, 2));
+        searchBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBarActionPerformed(evt);
+            }
+        });
+        searchBar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchBarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchBarFocusLost(evt);
+            }
+        });
 
         searchButton.setBackground(new java.awt.Color(51, 153, 255));
         searchButton.setFont(new java.awt.Font("Proxima Nova Rg", 0, 24)); // NOI18N
@@ -76,42 +106,22 @@ public class IMatView extends javax.swing.JFrame {
         searchButton.setContentAreaFilled(false);
         searchButton.setOpaque(true);
 
-        jButton1.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
-        jButton1.setText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        homeButton.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
+        homeButton.setText("");
 
-        jButton2.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
-        jButton2.setText("");
-        jButton2.setToolTipText("Till Inställningar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        settingsButton.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
+        settingsButton.setText("");
+        settingsButton.setToolTipText("Till Inställningar");
 
-        jButton3.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
-        jButton3.setText("");
-        jButton3.setToolTipText("Till Inköps Historik");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        historyButton.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
+        historyButton.setText("");
+        historyButton.setToolTipText("Till Inköps Historik");
 
-        jButton4.setFont(new java.awt.Font("FontAwesome", 1, 48)); // NOI18N
-        jButton4.setText("");
-        jButton4.setToolTipText("Till Hjälp");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        helpButton.setFont(new java.awt.Font("FontAwesome", 1, 48)); // NOI18N
+        helpButton.setText("");
+        helpButton.setToolTipText("Till Hjälp");
 
-        jSeparator5.setForeground(new java.awt.Color(90, 90, 90));
+        jSeparator5.setForeground(new java.awt.Color(150, 150, 150));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout topBarPanelLayout = new javax.swing.GroupLayout(topBarPanel);
@@ -120,7 +130,7 @@ public class IMatView extends javax.swing.JFrame {
             topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topBarPanelLayout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(186, 186, 186)
@@ -128,15 +138,15 @@ public class IMatView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarPanelLayout.createSequentialGroup()
@@ -147,31 +157,36 @@ public class IMatView extends javax.swing.JFrame {
         topBarPanelLayout.setVerticalGroup(
             topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topBarPanelLayout.createSequentialGroup()
-                .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(topBarPanelLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(topBarPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(topBarPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator3)))
-                    .addGroup(topBarPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSeparator4))
-                .addContainerGap())
-            .addGroup(topBarPanelLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarPanelLayout.createSequentialGroup()
+                .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(topBarPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(historyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator3)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2)
+                            .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
+                        .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, topBarPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(settingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(topBarPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -182,8 +197,9 @@ public class IMatView extends javax.swing.JFrame {
         sideBarPanel.setBackground(new java.awt.Color(90, 90, 90));
 
         categoryFavorites.setBackground(new java.awt.Color(250, 250, 250));
-        categoryFavorites.setFont(new java.awt.Font("FontAwesome", 1, 18)); // NOI18N
-        categoryFavorites.setText("Favoriter ");
+        categoryFavorites.setFont(new java.awt.Font("Proxima Nova Rg", 1, 18)); // NOI18N
+        categoryFavorites.setText("Favoriter");
+        categoryFavorites.setActionCommand("FAVOURITES");
         categoryFavorites.setBorderPainted(false);
         categoryFavorites.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         categoryFavorites.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +225,28 @@ public class IMatView extends javax.swing.JFrame {
                 .addContainerGap(590, Short.MAX_VALUE))
         );
 
+        productsPanel.setLayout(new java.awt.GridLayout(0, 3));
+
+        jLabel1.setFont(new java.awt.Font("Proxima Nova Rg", 0, 26)); // NOI18N
+        jLabel1.setText("Varukorg");
+
+        javax.swing.GroupLayout shoppingCartPanelLayout = new javax.swing.GroupLayout(shoppingCartPanel);
+        shoppingCartPanel.setLayout(shoppingCartPanelLayout);
+        shoppingCartPanelLayout.setHorizontalGroup(
+            shoppingCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shoppingCartPanelLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        shoppingCartPanelLayout.setVerticalGroup(
+            shoppingCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shoppingCartPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -216,14 +254,20 @@ public class IMatView extends javax.swing.JFrame {
             .addComponent(topBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(sideBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(productsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(shoppingCartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addComponent(topBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sideBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sideBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(productsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(shoppingCartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -240,25 +284,27 @@ public class IMatView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void categoryFavoritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryFavoritesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_categoryFavoritesActionPerformed
+
+    private void searchBarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchBarFocusGained
+        if(searchBarInitialText .equals(searchBar.getText())){
+            searchBar.setText("");
+            searchBar.setForeground(new Color(50,50,50));
+        }
+    }//GEN-LAST:event_searchBarFocusGained
+
+    private void searchBarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchBarFocusLost
+        if(searchBar.getText().equals("")){
+            searchBar.setText(searchBarInitialText);
+            searchBar.setForeground(new Color(150,150,150));
+        }
+    }//GEN-LAST:event_searchBarFocusLost
+
+    private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,26 +315,86 @@ public class IMatView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton categoryFavorites;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton helpButton;
+    private javax.swing.JButton historyButton;
+    private javax.swing.JButton homeButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel productsPanel;
     private javax.swing.JTextField searchBar;
     private javax.swing.JButton searchButton;
+    private javax.swing.JButton settingsButton;
+    private javax.swing.JPanel shoppingCartPanel;
     private javax.swing.JPanel sideBarPanel;
     private javax.swing.JPanel topBarPanel;
     // End of variables declaration//GEN-END:variables
 
-    public void addCategoriesListeners(ActionListener aL){
-        categoryFavorites.addActionListener(aL);
+    /**
+     * Adds a listener to all of the category buttons.
+     * @param actionListener the listener to add
+     */
+    public void addCategoriesListeners(ActionListener actionListener){
+        categoryFavorites.addActionListener(actionListener);
     }
     
-    public void setOutput(String s){
-        searchBar.setText(s);
+    /**
+     * Sets products in the product panel.
+     * @param list the list of the products to set
+     */
+    public void setProducts(List<ProductPanel> list){
+        products = list;
+        productsPanel.removeAll();
+        for(ProductPanel p : list){
+            productsPanel.add(p);
+        }
+        revalidate();
+        repaint();
+    }
+
+    /**
+     * Adds a listener to the search button.
+     * @param actionListener the listener to add
+     */
+    public void addSearchListeners(ActionListener actionListener) {
+        searchButton.addActionListener(actionListener);
+    }
+    
+    /**
+     * Returns the text currently in the search bar.
+     * @return searchText of the search bar, empty string if not modified
+     */
+    public String getSearchText(){
+        String searchText = searchBar.getText();
+        return searchText.equals("Sök efter en vara") ? "" : searchText;
+    }
+    
+    /**
+     * Adds a listener to all of the product panels.
+     * @param actionListener the listener to add
+     */
+    public void addBuyListeners(ActionListener actionListener){
+        for(ProductPanel p : products){
+            p.addBuyListeners(actionListener);
+        }
+    }
+    
+    /**
+     * Adds a listener to all of the products the shopping cart.
+     * @param actionListener the listener to add
+     */
+    public void addShoppingCartListeners(ActionListener actionListener){
+        
+    }
+    
+    /**
+     * Adds a listener to all of the buttons inteded to switch views.
+     * @param actionListener the listener to add
+     */
+    public void addSwitchViewListeners(ActionListener actionListener){
+        
     }
 }

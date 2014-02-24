@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -46,7 +46,10 @@
               <Component id="topBarPanel" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <Component id="sideBarPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="93" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="productsPanel" min="-2" pref="783" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="shoppingCartPanel" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -55,7 +58,11 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="topBarPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="sideBarPanel" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="sideBarPanel" max="32767" attributes="0"/>
+                      <Component id="productsPanel" max="32767" attributes="0"/>
+                      <Component id="shoppingCartPanel" alignment="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -80,7 +87,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="103" max="-2" attributes="0"/>
+                      <Component id="homeButton" min="-2" pref="103" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
@@ -88,15 +95,15 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchButton" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace pref="44" max="32767" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="103" max="-2" attributes="0"/>
+                      <Component id="historyButton" min="-2" pref="103" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator3" min="-2" pref="16" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="103" max="-2" attributes="0"/>
+                      <Component id="settingsButton" min="-2" pref="103" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator2" min="-2" pref="19" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="103" max="-2" attributes="0"/>
+                      <Component id="helpButton" min="-2" pref="103" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -110,34 +117,6 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="91" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="91" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton3" min="-2" pref="91" max="-2" attributes="0"/>
-                                  <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jSeparator2" max="32767" attributes="0"/>
-                                  <Component id="jButton4" min="-2" pref="91" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="jSeparator4" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -145,6 +124,42 @@
                           <Component id="searchButton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSeparator4" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="historyButton" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jSeparator2" max="32767" attributes="0"/>
+                                  <Component id="helpButton" min="-2" pref="91" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                      <Component id="homeButton" min="-2" pref="91" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="settingsButton" min="-2" pref="91" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -160,7 +175,7 @@
             <Component class="javax.swing.JSeparator" name="jSeparator2">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5a" green="5a" red="5a" type="rgb"/>
+                  <Color blue="96" green="96" red="96" type="rgb"/>
                 </Property>
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
@@ -168,7 +183,7 @@
             <Component class="javax.swing.JSeparator" name="jSeparator3">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5a" green="5a" red="5a" type="rgb"/>
+                  <Color blue="96" green="96" red="96" type="rgb"/>
                 </Property>
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
@@ -176,7 +191,7 @@
             <Component class="javax.swing.JSeparator" name="jSeparator4">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5a" green="5a" red="5a" type="rgb"/>
+                  <Color blue="96" green="96" red="96" type="rgb"/>
                 </Property>
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
@@ -184,26 +199,29 @@
             <Component class="javax.swing.JTextField" name="searchBar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                  <Color blue="f5" green="f5" red="f5" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Proxima Nova Rg" size="20" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="46" green="46" red="46" type="rgb"/>
+                  <Color blue="78" green="78" red="78" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="S&#xf6;k efter en vara"/>
+                <Property name="text" type="java.lang.String" value="S&#xf6;k efter en vara..."/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder roundedCorners="true" thickness="3">
-                      <Color PropertyName="color" blue="e6" green="e6" red="e6" type="rgb"/>
-                    </LineBorder>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="20" right="20" top="0"/>
                   </Border>
                 </Property>
                 <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                   <Insets value="[2, 20, 2, 2]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBarActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchBarFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchBarFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="searchButton">
               <Properties>
@@ -228,18 +246,15 @@
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="homeButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="FontAwesome" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#xf015;"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="settingsButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="FontAwesome" size="48" style="0"/>
@@ -247,11 +262,8 @@
                 <Property name="text" type="java.lang.String" value="&#xf013;"/>
                 <Property name="toolTipText" type="java.lang.String" value="Till Inst&#xe4;llningar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="historyButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="FontAwesome" size="48" style="0"/>
@@ -259,11 +271,8 @@
                 <Property name="text" type="java.lang.String" value="&#xf017;"/>
                 <Property name="toolTipText" type="java.lang.String" value="Till Ink&#xf6;ps Historik"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="helpButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="FontAwesome" size="48" style="1"/>
@@ -271,14 +280,11 @@
                 <Property name="text" type="java.lang.String" value="&#xf059;"/>
                 <Property name="toolTipText" type="java.lang.String" value="Till Hj&#xe4;lp"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator5">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5a" green="5a" red="5a" type="rgb"/>
+                  <Color blue="96" green="96" red="96" type="rgb"/>
                 </Property>
                 <Property name="orientation" type="int" value="1"/>
               </Properties>
@@ -319,9 +325,10 @@
                   <Color blue="fa" green="fa" red="fa" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="FontAwesome" size="18" style="1"/>
+                  <Font name="Proxima Nova Rg" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Favoriter &#xf005;"/>
+                <Property name="text" type="java.lang.String" value="Favoriter"/>
+                <Property name="actionCommand" type="java.lang.String" value="FAVOURITES"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Standardmark&#xf6;r"/>
@@ -330,6 +337,46 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categoryFavoritesActionPerformed"/>
               </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="productsPanel">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="3"/>
+            <Property name="rows" type="int" value="0"/>
+          </Layout>
+        </Container>
+        <Container class="javax.swing.JPanel" name="shoppingCartPanel">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Proxima Nova Rg" size="26" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Varukorg"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
