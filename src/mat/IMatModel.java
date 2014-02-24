@@ -35,6 +35,22 @@ public class IMatModel {
     }
     
     /**
+     * Set currently selected category to c
+     * @param c - The category to switch to
+     */
+    public void selectCategory(Category c){
+        selectedCategory = c;
+    }
+    
+    /**
+     * Get the category currently selected
+     * @return Category
+     */
+    public Category getSelectedCategory(){
+    	return selectedCategory;
+    }
+    
+    /**
      * toString for lists of products.
      * DEBUG
      * @param l - List to stringify
@@ -75,7 +91,7 @@ public class IMatModel {
      * @return All products in category c
      */
     public List<ProductPanel> search(Category c){
-    	List<Product> p = new ArrayList<>();
+    	List<Product> p = new ArrayList<Product>();
         switch (c){
             case FAVOURITE:
                 p.addAll(handler.favorites());
@@ -97,6 +113,7 @@ public class IMatModel {
                 p.addAll(handler.getProducts(ProductCategory.POD));
                 p.addAll(handler.getProducts(ProductCategory.HERB));
                 p.addAll(handler.getProducts(ProductCategory.CABBAGE));
+                
                 break;
                 
             case FRUIT:
@@ -207,6 +224,23 @@ public class IMatModel {
         }
         
         return panels;
+    }
+    
+    protected List<String> getAllCategoryNames(){
+        Category[] c = Category.values();
+        List<String> s = new ArrayList<>();
+        for (Category c1 : c) {
+            String q = c1.name();
+            q = q.charAt(0) + q.substring(1).toLowerCase();
+            s.add(q);
+        }
+   	
+        return s;
+    }
+    
+    protected Category stringToCategory(String s){
+        s = s.toUpperCase();
+        return Category.valueOf(s);
     }
     
 }

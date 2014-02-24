@@ -8,6 +8,8 @@ package mat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -23,29 +25,46 @@ public class IMatController{
     public IMatController(final IMatView view, final IMatModel model){
         this.view = view;
         this.model = model;
+        
         view.addCategoriesListeners(new CategoryListener());
-        
         view.addSearchListeners(new SearchListener());
-        
-        view.addBuyListeners(new ProductListener());
-        
-        view.addShoppingCartListeners(new CartListener());
-        
-        view.addSwitchViewListeners(new ViewListener());
+        view.addProductListeners(new ProductListener());
+        view.addCartListeners(new CartListener());
+        view.addViewListeners(new ViewListener());
     }
     
     
     /**
      * Class for listening on an event and producing ProductPanels from the selected category.
      */
-    private class CategoryListener implements ActionListener{
+    private class CategoryListener implements MouseListener{
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            //CategoryPanel p = (CategoryPanel)e.getSource();
-            //String category = p.getCategoryName();
-            //List<ProductPanel> list = model.search(model.getCategory(category));
-            //view.setProducts(list);
+        public void mouseClicked(MouseEvent e) {
+            CategoryPanel p = (CategoryPanel)e.getSource();
+            String category = p.getCategoryName();
+            List<ProductPanel> list = model.search(model.stringToCategory(category));
+            view.setProducts(list);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            ((CategoryPanel)e.getSource()).mousePressed();
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            ((CategoryPanel)e.getSource()).mouseReleased();
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            ((CategoryPanel)e.getSource()).mouseEntered();
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            ((CategoryPanel)e.getSource()).mouseExited();
         }
         
     }

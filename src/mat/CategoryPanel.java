@@ -11,7 +11,8 @@ package mat;
  * @author Nordmark
  */
 public class CategoryPanel extends javax.swing.JPanel {
-
+    private String categoryName;
+    
     /**
      * Creates new form CategoryPanel
      */
@@ -19,9 +20,10 @@ public class CategoryPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CategoryPanel(String category) {
+    public CategoryPanel(String categoryName) {
         this();
-        catLabel.setText(category);
+        this.categoryName = categoryName;
+        catLabel.setText(categoryName);
     }
 
     /**
@@ -35,9 +37,12 @@ public class CategoryPanel extends javax.swing.JPanel {
 
         catLabel = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(90, 90, 90));
+        setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(40, 40, 40)));
+        setForeground(new java.awt.Color(210, 210, 210));
 
-        catLabel.setFont(new java.awt.Font("Avenir Next", 0, 18)); // NOI18N
+        catLabel.setFont(new java.awt.Font("Avenir Next", 0, 24)); // NOI18N
+        catLabel.setForeground(new java.awt.Color(240, 240, 240));
         catLabel.setText("Favoriter");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -46,14 +51,14 @@ public class CategoryPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(catLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(catLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(catLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(catLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -64,6 +69,27 @@ public class CategoryPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public String getCategoryName(){
-        return catLabel.getText();
+        return categoryName;
+    }
+    
+    public void mousePressed(){
+        // Ändra utseende för hur panelen ska se ut när den är nedtryckt.
+    }
+    
+    public void mouseReleased(){
+        // Ändra hur panelen ska se ut när användaren slutar trycka ned knappen.
+    }
+    
+    public void mouseEntered(){
+        // Ändra hur panelen ska se ut när användaren håller musen ovanför den.
+    }
+    
+    public void mouseExited(){
+        // Ändra hur panelen ska se ut när användaren tar bort musen från panelen.
+    }
+    
+    @Override
+    public String toString(){
+        return "En panel för kategori med : " + categoryName;
     }
 }
