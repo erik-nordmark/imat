@@ -375,9 +375,12 @@ public class IMatView extends javax.swing.JFrame {
      * @param actionListener the listener to add
      */
     public void addBuyListeners(ActionListener actionListener){
-        for(ProductPanel p : products){
-            p.addBuyListeners(actionListener);
+        if(products != null){
+            for(ProductPanel p : products){
+                p.addBuyListeners(actionListener);
+            }
         }
+        
     }
     
     /**

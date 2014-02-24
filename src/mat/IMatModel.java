@@ -10,6 +10,7 @@ package mat;
  *
  * @author Joakim
  */
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.*;
@@ -20,20 +21,16 @@ public class IMatModel {
     
     public enum Category{
         FAVOURITE, MEAT, FISH, DAIRY, BREAD, VEGETABLE,
-        FROZEN, DRY, BEVERAGE, SWEET;
+        FRUIT, DRY, BEVERAGE, SWEET;
     }
     
     
     public IMatModel(){
-        handler = IMatDataHandler.getInstance();
-        selectedCategory = Category.MEAT;
+        this(Category.MEAT);
     }
     
-    /**
-     * Set currently selected category to c
-     * @param c - The category to switch to
-     */
-    public void selectCategory(Category c){
+    public IMatModel(Category c){
+        handler = IMatDataHandler.getInstance();
         selectedCategory = c;
     }
     
@@ -59,8 +56,8 @@ public class IMatModel {
      * Search products without arguments
      * @return All products
      */
-    public List<Product> search(){
-        return handler.getProducts();
+    public List<ProductPanel> search(){
+        return productsToPanels(handler.getProducts());
     }
     
     /**
@@ -68,8 +65,8 @@ public class IMatModel {
      * @param s - String to look for
      * @return All products which String s in their name
      */
-    public List<Product> search(String s){
-        return handler.findProducts(s);
+    public List<ProductPanel> search(String s){
+        return productsToPanels(handler.findProducts(s));
     }
     
     /**
@@ -77,43 +74,57 @@ public class IMatModel {
      * @param c - Category to get
      * @return All products in category c
      */
-    public List<Product> search(Category c){
+    public List<ProductPanel> search(Category c){
+    	List<Product> p = new ArrayList<>();
         switch (c){
             case FAVOURITE:
-                return handler.favorites();
+                p.addAll(handler.favorites());
+                break;
             case MEAT:
-                return handler.getProducts(ProductCategory.MEAT);
+            	p.addAll(handler.getProducts(ProductCategory.MEAT));
+            	break;
             case FISH:
-                return handler.getProducts(ProductCategory.FISH);
+            	p.addAll(handler.getProducts(ProductCategory.FISH));
+            	break;
             case DAIRY:
-                return handler.getProducts(ProductCategory.DAIRIES);
+            	p.addAll(handler.getProducts(ProductCategory.DAIRIES));
+            	break;
             case BREAD:
-                return handler.getProducts(ProductCategory.BREAD);
+            	p.addAll(handler.getProducts(ProductCategory.BREAD));
+            	break;
             case VEGETABLE:
-                List<Product> veg = handler.getProducts(ProductCategory.VEGETABLE_FRUIT);
-                veg.addAll(handler.getProducts(ProductCategory.ROOT_VEGETABLE));
-                veg.addAll(handler.getProducts(ProductCategory.CITRUS_FRUIT));
-                veg.addAll(handler.getProducts(ProductCategory.POD));
-                veg.addAll(handler.getProducts(ProductCategory.HERB));
-                veg.addAll(handler.getProducts(ProductCategory.MELONS));
-                veg.addAll(handler.getProducts(ProductCategory.BERRY));
+                p.addAll(handler.getProducts(ProductCategory.ROOT_VEGETABLE));
+                p.addAll(handler.getProducts(ProductCategory.POD));
+                p.addAll(handler.getProducts(ProductCategory.HERB));
+                p.addAll(handler.getProducts(ProductCategory.CABBAGE));
+                break;
                 
-                return veg;
-            case FROZEN:
-                return handler.getProducts();
+            case FRUIT:
+            	p.addAll(handler.getProducts(ProductCategory.FRUIT));
+            	p.addAll(handler.getProducts(ProductCategory.EXOTIC_FRUIT));
+            	p.addAll(handler.getProducts(ProductCategory.VEGETABLE_FRUIT));
+            	p.addAll(handler.getProducts(ProductCategory.CITRUS_FRUIT));
+            	p.addAll(handler.getProducts(ProductCategory.MELONS));
+                p.addAll(handler.getProducts(ProductCategory.BERRY));
+                break;
+            	
             case DRY:
-                List<Product> dry = handler.getProducts(ProductCategory.PASTA);
-                dry.addAll(handler.getProducts(ProductCategory.POTATO_RICE));
-                dry.addAll(handler.getProducts(ProductCategory.NUTS_AND_SEEDS));
-                dry.addAll(handler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
-                
-                return dry;
+                p.addAll(handler.getProducts(ProductCategory.PASTA));
+                p.addAll(handler.getProducts(ProductCategory.POTATO_RICE));
+                p.addAll(handler.getProducts(ProductCategory.NUTS_AND_SEEDS));
+                p.addAll(handler.getProducts(ProductCategory.FLOUR_SUGAR_SALT));
+                break;
             case BEVERAGE:
-                return handler.getProducts(ProductCategory.COLD_DRINKS);
+            	p.addAll(handler.getProducts(ProductCategory.COLD_DRINKS));
+            	p.addAll(handler.getProducts(ProductCategory.HOT_DRINKS));
+            	break;
             case SWEET: 
-                return handler.getProducts(ProductCategory.SWEET);
+            	p.addAll(handler.getProducts(ProductCategory.SWEET));
+            	break;
+            	
         }
-        return null;
+        
+        return productsToPanels(p);
     }
     
     /**
@@ -171,29 +182,31 @@ public class IMatModel {
             }
         }
     }
-    
+    /**
+     * Change amount of a specified Product p
+     * @param p The product
+     * @param amount Amount of p to change to
+     */
     public void changeAmount(Product p, double amount){
         changeAmount(new ShoppingItem(p,amount));
     }
     
-    public void clearCart(){
-        handler.getShoppingCart().clear();
+    public IMatDataHandler getDataHandler(){
+    	return handler;
     }
     
-    public double getTotalPrice(){
-        return handler.getShoppingCart().getTotal();
-    }
-    
-    public CreditCard getCreditCard(){
-        return handler.getCreditCard();
-    }
-    
-    public Customer getCustomer(){
-        return handler.getCustomer();
-    }
-    
-    public List<Order> getOrders(){
-        return handler.getOrders();
+    /**
+     * Private method to make converting List<Product> to List<ProductPanel> easier.
+     * @param p Product List to convert
+     * @return all Products in ProductPanel form
+     */
+    private List<ProductPanel> productsToPanels(List<Product> p){
+        List<ProductPanel> panels = new ArrayList<>();
+        for (Product product : p){
+            panels.add(new ProductPanel(product, getProductImage(product, 200, 200)));
+        }
+        
+        return panels;
     }
     
 }

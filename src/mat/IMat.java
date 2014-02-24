@@ -23,18 +23,10 @@ public class IMat {
             // Set System L&F
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } 
-        catch (UnsupportedLookAndFeelException e) {
+        catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
            // handle exception
         }
-        catch (ClassNotFoundException e) {
-           // handle exception
-        }
-        catch (InstantiationException e) {
-           // handle exception
-        }
-        catch (IllegalAccessException e) {
-           // handle exception
-        }
+        
         IMatModel model = new IMatModel();
         IMatView view = new IMatView(model);
         IMatController controller = new IMatController(view, model);

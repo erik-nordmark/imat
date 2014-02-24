@@ -8,7 +8,6 @@ package mat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -24,62 +23,87 @@ public class IMatController{
     public IMatController(final IMatView view, final IMatModel model){
         this.view = view;
         this.model = model;
-        view.addCategoriesListeners(new ActionListener(){
+        view.addCategoriesListeners(new CategoryListener());
+        
+        view.addSearchListeners(new SearchListener());
+        
+        view.addBuyListeners(new ProductListener());
+        
+        view.addShoppingCartListeners(new CartListener());
+        
+        view.addSwitchViewListeners(new ViewListener());
+    }
+    
+    
+    /**
+     * Class for listening on an event and producing ProductPanels from the selected category.
+     */
+    private class CategoryListener implements ActionListener{
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                List<Product> listOfProducts = model.search(IMatModel.Category.MEAT);
-                List<ProductPanel> list = new ArrayList();
-                for(Product p : listOfProducts){
-                    ProductPanel pp = new ProductPanel(p,model.getProductImage(p, 200, 200));
-                    list.add(pp);
-                }
-                view.setProducts(list);
-            }
-            
-        });
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //CategoryPanel p = (CategoryPanel)e.getSource();
+            //String category = p.getCategoryName();
+            //List<ProductPanel> list = model.search(model.getCategory(category));
+            //view.setProducts(list);
+        }
         
-        view.addSearchListeners(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String searchText = view.getSearchText();
-                System.out.println(searchText);
-                List<Product> listOfProducts = model.search(searchText);
-                List<ProductPanel> list = new ArrayList();
-                for(Product p : listOfProducts){
-                    ProductPanel pp = new ProductPanel(p,model.getProductImage(p, 200, 200));
-                    list.add(pp);
-                }
-                view.setProducts(list);
-            }
-        });
-        
-        
-        view.addBuyListeners(new ActionListener(){
+    }
+    
+    
+    /**
+     * Class for listening on an event and producing ProductPanels from the search text currently
+     * provided by the view.
+     */
+    private class SearchListener implements ActionListener{
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                double amount = ((ProductPanel)e.getSource()).getAmount();
-                Product product = ((ProductPanel)e.getSource()).getProduct();
-                model.addToCart(new ShoppingItem(product, amount));
-            }
-        });
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String searchText = view.getSearchText();
+            System.out.println(searchText);     //Ta bort senare --> endast för test!
+            List<ProductPanel> list = model.search(searchText);
+            view.setProducts(list);
+        }
         
-        view.addShoppingCartListeners(new ActionListener(){
+    }
+    
+    /**
+     * Class for listening on an event and adding the selected product to the Shopping Cart.
+     */
+    private class ProductListener implements ActionListener{
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ProductPanel p = ((ProductPanel)e.getSource());
+            double amount = p.getAmount();
+            Product product = p.getProduct();
+            model.addToCart(new ShoppingItem(product, amount));
+        }
         
-        view.addSwitchViewListeners(new ActionListener(){
+    }
+    
+    /**
+     * Class for listening on events controlling the 
+     */
+    private class CartListener implements ActionListener{
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // Ändra antal, ta bort, köp och töm
+        }
+        
+    }
+    
+    /**
+     * 
+     */
+    private class ViewListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // inställningar, historik, hjälp, hem
+        }
+        
     }
     
 }
