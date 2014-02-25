@@ -6,6 +6,8 @@
 
 package mat;
 
+import se.chalmers.ait.dat215.project.ShoppingItem;
+
 /**
  *
  * @author Joakim
@@ -19,9 +21,10 @@ public class CartItem extends javax.swing.JPanel {
         initComponents();
     }
     
-    public CartItem(String itemName) {
+    public CartItem(ShoppingItem item) {
         this();
-        itemLabel.setText(itemName);
+        itemLabel.setText(item.getProduct().getName());
+        itemSpinner.setValue(item.getAmount());
     }
 
     /**
@@ -38,8 +41,8 @@ public class CartItem extends javax.swing.JPanel {
         itemSpinner = new javax.swing.JSpinner();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        setOpaque(false);
+        setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(120, 120, 120)));
+        setPreferredSize(new java.awt.Dimension(227, 26));
 
         itemLabel.setFont(new java.awt.Font("Avenir Next", 0, 15)); // NOI18N
         itemLabel.setText("Vara");
@@ -47,6 +50,7 @@ public class CartItem extends javax.swing.JPanel {
         deleteButton.setFont(new java.awt.Font("FontAwesome", 0, 15)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(255, 0, 0));
         deleteButton.setText("");
+        deleteButton.setContentAreaFilled(false);
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -58,13 +62,13 @@ public class CartItem extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(itemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(itemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(itemSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,5 +93,6 @@ public class CartItem extends javax.swing.JPanel {
     private String getItemName(){
         return itemLabel.getText();
     }
+    
 
 }

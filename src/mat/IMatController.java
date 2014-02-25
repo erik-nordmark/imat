@@ -10,8 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
+import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -29,12 +33,17 @@ public class IMatController{
         
         view.addCategoriesListeners(new CategoryListener());
         view.addSearchListeners(new SearchListener());
-        view.addProductListeners(new ProductListener());
         view.addCartListeners(new CartListener());
         view.addViewListeners(new ViewListener());
-        //model.addShoppingCartListener(new ShoppingCartListener(){
+        model.getDataHandler().getShoppingCart().addShoppingCartListener(new ShoppingCartListener(){
+
+            @Override
+            public void shoppingCartChanged(CartEvent ce) {
+                ShoppingCart cart = (ShoppingCart)ce.getSource();
+                view.setCartItems(cart.getItems());
+            }
             
-        //})
+        });
     }
     
     
@@ -49,6 +58,7 @@ public class IMatController{
             String category = p.getCategoryName();
             List<ProductPanel> list = model.search(model.stringToCategory(category));
             view.setProducts(list);
+            view.addProductListener(new ProductListener());
         }
 
         @Override
@@ -83,9 +93,11 @@ public class IMatController{
         @Override
         public void actionPerformed(ActionEvent e) {
             String searchText = view.getSearchText();
-            System.out.println(searchText);     //Ta bort senare --> endast för test!
+            // Lägg till så söktexten syns i en panel ovanför resultaten
+            
             List<ProductPanel> list = model.search(searchText);
             view.setProducts(list);
+            view.addProductListener(new ProductListener());
         }
         
     }
@@ -93,13 +105,13 @@ public class IMatController{
     /**
      * Class for listening on an event and adding the selected product to the Shopping Cart.
      */
-    private class ProductListener implements ActionListener{
+    private class ProductListener implements PropertyChangeListener{
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            ProductPanel p = ((ProductPanel)e.getSource());
-            double amount = p.getAmount();
-            Product product = p.getProduct();
+        public void propertyChange(PropertyChangeEvent evt) {
+            ProductPanel pp = (ProductPanel)evt.getSource();
+            double amount = pp.getAmount();
+            Product product = pp.getProduct();
             model.addToCart(new ShoppingItem(product, amount));
         }
         

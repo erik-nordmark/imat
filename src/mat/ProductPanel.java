@@ -7,6 +7,8 @@
 package mat;
 
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.Product;
 
@@ -16,6 +18,7 @@ import se.chalmers.ait.dat215.project.Product;
  */
 public class ProductPanel extends javax.swing.JPanel {
     private Product product;
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     /**
      * Creates new form ProductPanel
@@ -123,7 +126,7 @@ public class ProductPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
-        // TODO add your handling code here:
+        pcs.firePropertyChange(product.getName(), null, null);
     }//GEN-LAST:event_buyButtonActionPerformed
 
 
@@ -140,11 +143,21 @@ public class ProductPanel extends javax.swing.JPanel {
         buyButton.addActionListener(actionListener);
     }
     
-    public double getAmount(){
-        return (Double)productAmount.getValue();
+    public int getAmount(){
+        return (Integer)productAmount.getValue();
     }
     
     public Product getProduct(){
         return product;
     }
+    
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+         this.pcs.addPropertyChangeListener(listener);
+     }
+
+    @Override
+     public void removePropertyChangeListener(PropertyChangeListener listener) {
+         this.pcs.removePropertyChangeListener(listener);
+     }
 }

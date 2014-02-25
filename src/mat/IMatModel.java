@@ -167,6 +167,7 @@ public class IMatModel {
             for (ShoppingItem s: si) {
                 if ( s.getProduct().equals(item.getProduct()) ){
                     s.setAmount(s.getAmount() + item.getAmount());
+                    handler.getShoppingCart().fireShoppingCartChanged(item, found);
                     found = true;
                     break;
                 }
