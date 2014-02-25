@@ -74,18 +74,24 @@ public class CategoryPanel extends javax.swing.JPanel {
     
     public void mousePressed(){
         // Ändra utseende för hur panelen ska se ut när den är nedtryckt.
+        setBackground(new java.awt.Color(117,117,117));
     }
     
     public void mouseReleased(){
         // Ändra hur panelen ska se ut när användaren slutar trycka ned knappen.
+        
     }
     
     public void mouseEntered(){
         // Ändra hur panelen ska se ut när användaren håller musen ovanför den.
+        setBackground(new java.awt.Color(98,98,98));
+        catLabel.setForeground(new java.awt.Color(51,153,255));
     }
     
     public void mouseExited(){
         // Ändra hur panelen ska se ut när användaren tar bort musen från panelen.
+        setBackground(new java.awt.Color(90, 90, 90));
+        catLabel.setForeground(new java.awt.Color(240, 240, 240));
     }
     
     @Override
