@@ -73,6 +73,7 @@ public class IMatView extends javax.swing.JFrame {
         shoppingCartPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +121,11 @@ public class IMatView extends javax.swing.JFrame {
 
         homeButton.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
         homeButton.setText("");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
 
         settingsButton.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
         settingsButton.setText("");
@@ -145,7 +151,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,8 +213,13 @@ public class IMatView extends javax.swing.JFrame {
         productsPane.setBorder(null);
         productsPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         productsPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        productsPane.setMaximumSize(new java.awt.Dimension(860, 860));
 
-        productsPanel.setLayout(new java.awt.GridLayout(0, 3));
+        productsPanel.setMaximumSize(new java.awt.Dimension(860, 860));
+        java.awt.GridBagLayout productsPanelLayout = new java.awt.GridBagLayout();
+        productsPanelLayout.columnWidths = new int[] {249};
+        productsPanelLayout.rowHeights = new int[] {329};
+        productsPanel.setLayout(productsPanelLayout);
         productsPane.setViewportView(productsPanel);
 
         jLabel1.setFont(new java.awt.Font("Proxima Nova Rg", 0, 26)); // NOI18N
@@ -219,6 +230,7 @@ public class IMatView extends javax.swing.JFrame {
         shoppingCartPanelLayout.setHorizontalGroup(
             shoppingCartPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
+            .addComponent(jSeparator6)
             .addGroup(shoppingCartPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
@@ -231,7 +243,9 @@ public class IMatView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(725, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -242,8 +256,8 @@ public class IMatView extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(sideBarPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(productsPane)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(productsPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(shoppingCartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         mainPanelLayout.setVerticalGroup(
@@ -254,7 +268,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(shoppingCartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(sideBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(productsPane)))
+                    .addComponent(productsPane, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,6 +303,10 @@ public class IMatView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchBarActionPerformed
 
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -306,6 +324,7 @@ public class IMatView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JScrollPane productsPane;
     private javax.swing.JPanel productsPanel;

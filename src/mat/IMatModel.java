@@ -91,7 +91,7 @@ public class IMatModel {
      * @return All products in category c
      */
     public List<ProductPanel> search(Category c){
-    	List<Product> p = new ArrayList<Product>();
+        List<Product> p = new ArrayList<>();
         switch (c){
             case FAVOURITE:
                 p.addAll(handler.favorites());

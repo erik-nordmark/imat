@@ -34,7 +34,7 @@
               <Component id="productPrice" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="productUnit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
               <Component id="productAmount" min="-2" pref="51" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="buyButton" min="-2" pref="62" max="-2" attributes="0"/>
