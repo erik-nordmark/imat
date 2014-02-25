@@ -1,5 +1,8 @@
 package mat;
 
+import javax.swing.BorderFactory;
+import javax.swing.border.CompoundBorder;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -84,7 +87,9 @@ public class CategoryPanel extends javax.swing.JPanel {
     
     public void mouseEntered(){
         // Ändra hur panelen ska se ut när användaren håller musen ovanför den.
-        setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(13,116,255)));
+        new CompoundBorder(
+        BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(13,116,255)),
+        BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(40, 40, 40)));
         catLabel.setForeground(new java.awt.Color(13,116,255));
     }
     
