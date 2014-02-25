@@ -20,6 +20,11 @@ public class CartItem extends javax.swing.JPanel {
     public CartItem() {
         initComponents();
     }
+    
+    public CartItem(String itemName) {
+        this();
+        itemLabel.setText(itemName);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,4 +87,9 @@ public class CartItem extends javax.swing.JPanel {
     private javax.swing.JLabel itemLabel;
     private javax.swing.JSpinner itemSpinner;
     // End of variables declaration//GEN-END:variables
+    
+    private String getItemName(){
+        return itemLabel.getText();
+    }
+
 }
