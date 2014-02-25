@@ -220,7 +220,7 @@ public class IMatModel {
     private List<ProductPanel> productsToPanels(List<Product> p){
         List<ProductPanel> panels = new ArrayList<>();
         for (Product product : p){
-            panels.add(new ProductPanel(product, getProductImage(product, 200, 200)));
+            panels.add(new ProductPanel(product, getProductImage(product, 180, 180)));
         }
         
         return panels;

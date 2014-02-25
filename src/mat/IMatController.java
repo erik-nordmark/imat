@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
@@ -31,6 +32,9 @@ public class IMatController{
         view.addProductListeners(new ProductListener());
         view.addCartListeners(new CartListener());
         view.addViewListeners(new ViewListener());
+        //model.addShoppingCartListener(new ShoppingCartListener(){
+            
+        //})
     }
     
     
@@ -102,7 +106,7 @@ public class IMatController{
     }
     
     /**
-     * Class for listening on events controlling the 
+     * Class for listening on events controlling the operations on the shopping cart.
      */
     private class CartListener implements ActionListener{
 
@@ -115,7 +119,7 @@ public class IMatController{
     }
     
     /**
-     * 
+     * Class for listening on an event and switching view to the selected.
      */
     private class ViewListener implements ActionListener{
 
