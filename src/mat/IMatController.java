@@ -58,7 +58,7 @@ public class IMatController{
             String category = p.getCategoryName();
             List<ProductPanel> list = model.search(model.stringToCategory(category));
             view.setProducts(list);
-            view.addProductListener(new ProductListener());
+            view.addProductListeners(new ProductListener());
         }
 
         @Override
@@ -97,7 +97,7 @@ public class IMatController{
             
             List<ProductPanel> list = model.search(searchText);
             view.setProducts(list);
-            view.addProductListener(new ProductListener());
+            view.addProductListeners(new ProductListener());
         }
         
     }
@@ -142,4 +142,15 @@ public class IMatController{
         
     }
     
+    /**
+     * 
+     */
+    private class CartItemListener implements PropertyChangeListener{
+        
+        @Override
+        public void propertyChange(PropertyChangeEvent evt) {
+            //ta bort produkt
+        }
+        
+    }
 }

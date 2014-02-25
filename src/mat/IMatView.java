@@ -7,10 +7,7 @@
 package mat;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
 import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -26,6 +23,7 @@ public class IMatView extends javax.swing.JFrame {
     private final String searchBarInitialText;
     private List<ProductPanel> products;
     private List<CategoryPanel> categories;
+    private List<CartItem> cartItems;
     private IMatModel model;
 
     /**
@@ -35,7 +33,7 @@ public class IMatView extends javax.swing.JFrame {
         initComponents();
         searchBarInitialText = searchBar.getText();
         categories = new ArrayList<>();
-        
+        cartItems = new ArrayList<>();
     }
     
     /**
@@ -313,7 +311,7 @@ public class IMatView extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(shoppingCartPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(sideBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(productsPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)))
+                    .addComponent(productsPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -421,6 +419,7 @@ public class IMatView extends javax.swing.JFrame {
      */
     public void addSearchListeners(ActionListener actionListener) {
         searchButton.addActionListener(actionListener);
+        searchBar.addActionListener(actionListener);
     }
     
     /**
@@ -445,7 +444,11 @@ public class IMatView extends javax.swing.JFrame {
         
     }
     
-    public void addProductListener(PropertyChangeListener pcs){
+    /**
+     * Adds a propertychangelistener to all of the product panels.
+     * @param pcs the listener to add
+     */
+    public void addProductListeners(PropertyChangeListener pcs){
         if(products != null){
             for(ProductPanel p : products){
                 p.addPropertyChangeListener(pcs);
@@ -472,9 +475,17 @@ public class IMatView extends javax.swing.JFrame {
     public void setCartItems(List<ShoppingItem> list){
         cartItemContainer.removeAll();
         for(ShoppingItem item : list){
-            cartItemContainer.add(new CartItem(item));
+            CartItem ci = new CartItem(item);
+            this.cartItems.add(ci);
+            cartItemContainer.add(ci);
         }
         revalidate();
         repaint();
+    }
+    
+    public void addCartItemsListeners(ActionListener actionListener){
+        for(CartItem ci : cartItems){
+            //ci.addCartItemListener(actionListener);
+        }
     }
 }

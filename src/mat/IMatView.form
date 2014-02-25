@@ -61,7 +61,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="shoppingCartPanel" alignment="0" max="32767" attributes="0"/>
                       <Component id="sideBarPanel" max="32767" attributes="0"/>
-                      <Component id="productsPane" alignment="0" pref="734" max="32767" attributes="0"/>
+                      <Component id="productsPane" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
