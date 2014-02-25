@@ -6,8 +6,6 @@
 
 package mat;
 
-import java.awt.Paint;
-
 /**
  *
  * @author Joakim
