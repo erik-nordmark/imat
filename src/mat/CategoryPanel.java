@@ -87,9 +87,9 @@ public class CategoryPanel extends javax.swing.JPanel {
     
     public void mouseEntered(){
         // Ändra hur panelen ska se ut när användaren håller musen ovanför den.
-        new CompoundBorder(
+        this.setBorder(new CompoundBorder(
         BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(13,116,255)),
-        BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(40, 40, 40)));
+        BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(40, 40, 40))));
         catLabel.setForeground(new java.awt.Color(13,116,255));
     }
     
@@ -106,6 +106,8 @@ public class CategoryPanel extends javax.swing.JPanel {
     public void resetPanel(){
         setBackground(new java.awt.Color(80, 80, 80));
         catLabel.setForeground(new java.awt.Color(240, 240, 240));
-        setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(40, 40, 40)));
+        this.setBorder(new CompoundBorder(
+        BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(80, 80, 80)),
+        BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(40, 40, 40))));
     }
 }
