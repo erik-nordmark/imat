@@ -12,6 +12,7 @@ import java.util.List;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -25,6 +26,7 @@ public class IMatView extends javax.swing.JFrame {
     private List<CategoryPanel> categories;
     private List<CartItem> cartItems;
     private IMatModel model;
+    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     /**
      * Creates new form IMatView
@@ -128,6 +130,11 @@ public class IMatView extends javax.swing.JFrame {
         searchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240), 3));
         searchButton.setContentAreaFilled(false);
         searchButton.setOpaque(true);
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         homeButton.setFont(new java.awt.Font("FontAwesome", 0, 48)); // NOI18N
         homeButton.setText("");
@@ -343,19 +350,17 @@ public class IMatView extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBarFocusLost
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
-        // TODO add your handling code here:
+        //pcs.firePropertyChange("search", null, null);
     }//GEN-LAST:event_searchBarActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_homeButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        
-    }
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        //pcs.firePropertyChange("search", null, null);
+    }//GEN-LAST:event_searchButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buyProducts;
@@ -483,9 +488,14 @@ public class IMatView extends javax.swing.JFrame {
         repaint();
     }
     
-    public void addCartItemsListeners(ActionListener actionListener){
+    public void addCartItemsListeners(PropertyChangeListener pcl){
         for(CartItem ci : cartItems){
-            //ci.addCartItemListener(actionListener);
+            ci.addCartItemListener(pcl);
         }
+    }
+    
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener pcl){
+        pcs.addPropertyChangeListener(pcl);
     }
 }

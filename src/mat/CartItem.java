@@ -6,6 +6,8 @@
 
 package mat;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
@@ -13,7 +15,9 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  * @author Joakim
  */
 public class CartItem extends javax.swing.JPanel {
-
+    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private ShoppingItem item;
+    
     /**
      * Creates new form CartItem
      */
@@ -25,6 +29,7 @@ public class CartItem extends javax.swing.JPanel {
         this();
         itemLabel.setText(item.getProduct().getName());
         itemSpinner.setValue(item.getAmount());
+        this.item = item;
     }
 
     /**
@@ -80,7 +85,7 @@ public class CartItem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
+        pcs.firePropertyChange("delete" ,null,null);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
 
@@ -90,8 +95,12 @@ public class CartItem extends javax.swing.JPanel {
     private javax.swing.JSpinner itemSpinner;
     // End of variables declaration//GEN-END:variables
     
-    private String getItemName(){
-        return itemLabel.getText();
+    public ShoppingItem getShoppingItem(){
+        return item;
+    }
+    
+    public void addCartItemListener(PropertyChangeListener pcl){
+        pcs.addPropertyChangeListener(pcl);
     }
     
 

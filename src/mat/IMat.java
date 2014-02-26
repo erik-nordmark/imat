@@ -30,6 +30,7 @@ public class IMat {
         IMatModel model = new IMatModel();
         IMatView view = new IMatView(model);
         IMatController controller = new IMatController(view, model);
+        //view.addPropertyChangeListener(controller);
         view.setVisible(true);
     }
     

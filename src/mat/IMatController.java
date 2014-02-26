@@ -45,6 +45,24 @@ public class IMatController{
             
         });
     }
+
+   // @Override
+    //public void propertyChange(PropertyChangeEvent evt) {
+     //   if(evt.getPropertyName().equals("search")){
+      //      search();
+       // }else if(evt.getPropertyName().equals("search")){
+            
+        //}
+   // }
+    
+    private void search(){
+        String searchText = view.getSearchText();
+            // Lägg till så söktexten syns i en panel ovanför resultaten
+            
+            List<ProductPanel> list = model.search(searchText);
+            view.setProducts(list);
+            view.addProductListeners(new ProductListener());
+    }
     
     
     /**
@@ -112,7 +130,12 @@ public class IMatController{
             ProductPanel pp = (ProductPanel)evt.getSource();
             double amount = pp.getAmount();
             Product product = pp.getProduct();
+            
+            //Lägg till den nya produkten i varukorgen.
             model.addToCart(new ShoppingItem(product, amount));
+            
+            // Lägg till lyssnare till produkterna i varukorgen.
+            view.addCartItemsListeners(new CartItemListener());
         }
         
     }
@@ -150,6 +173,8 @@ public class IMatController{
         @Override
         public void propertyChange(PropertyChangeEvent evt) {
             //ta bort produkt
+            CartItem item = (CartItem)evt.getSource();
+            model.getShoppingCart().removeItem(item.getShoppingItem());
         }
         
     }
